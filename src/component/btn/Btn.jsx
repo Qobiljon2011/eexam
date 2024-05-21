@@ -6,13 +6,13 @@ const Btn = () => {
       <button className="w-[20%] h-[40px] bg-[#87CEEB] border-2 font-bold text-[16px] flex items-center justify-start p-3 rounded-[4px]">
         24 Hours
       </button>
-      <button className="w-[20%] h-[40px] bg-[#87CEEB] border-2 font-bold text-[16px] flex items-center justify-start p-3 rounded-[4px]">
+      <button className="w-[20%] h-[40px] bg-[#87CEEB] border-2 font-normal text-[16px] flex items-center justify-start p-3 rounded-[4px]">
         30 Days
       </button>
-      <button className="w-[20%] h-[40px] bg-[#87CEEB] border-2 font-bold text-[16px] flex items-center justify-start p-3 rounded-[4px] ">
+      <button className="w-[20%] h-[40px] bg-[#87CEEB] border-2 font-normal text-[16px] flex items-center justify-start p-3 rounded-[4px] ">
         3 Months
       </button>
-      <button className="w-[20%] h-[40px] bg-[#87CEEB] border-2 font-bold text-[16px] flex items-center justify-start p-3 rounded-[4px]">
+      <button className="w-[20%] h-[40px] bg-[#87CEEB] border-2 font-normal text-[16px] flex items-center justify-start p-3 rounded-[4px]">
         1 Year
       </button>
     </div>

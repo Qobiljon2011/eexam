@@ -8,6 +8,7 @@ import Btn from "../../../component/btn/Btn";
 const MainDetails = () => {
   const { id } = useParams();
   const {
+    select,
     bitcoin,
     ethereum,
     ripple,
@@ -70,9 +71,31 @@ const MainDetails = () => {
     stellar,
   ]);
 
+  const formatCurrency = (price) => {
+    let formattedPrice = "";
+    switch (select) {
+      case "USD":
+        formattedPrice = `$${price}`;
+        break;
+      case "RUB":
+        formattedPrice = `${(price * 90).toFixed(0)}₽`;
+        break;
+      case "SUM":
+        formattedPrice = `${(price * 12000).toFixed(0)} SUM`;
+        break;
+      default:
+        formattedPrice = `$${price}`;
+        break;
+    }
+    if (formattedPrice.length > 11) {
+      formattedPrice = formattedPrice.substring(0, 8) + "...";
+    }
+    return formattedPrice;
+  };
+
   if (!selectedCrypto) {
     return (
-      <div>Data not found for coin with id: {id}. Wait till API works.</div>
+      <div> {id}'s API dont work or data not found. Wait till API works.</div>
     );
   }
 
@@ -121,7 +144,7 @@ const MainDetails = () => {
                 Current Price :
               </p>
               <p className="text-white text-[24px] font-normal">
-                {selectedCrypto?.market_data?.current_price?.usd}$
+                {formatCurrency(selectedCrypto?.market_data?.current_price?.usd)}
               </p>
             </div>
             <div className="w-full h-[30%]  flex items-center p-4 gap-2">

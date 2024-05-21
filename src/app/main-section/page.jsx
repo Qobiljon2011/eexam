@@ -12,7 +12,7 @@ const MainSection = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
-  const { cryptoData, select } = useContext(CryptoContext);
+  const { cryptoData } = useContext(CryptoContext);
   const recordsPerPage = 3;
 
   const removeFromWatchlist = (indexToRemove) => {
@@ -21,35 +21,9 @@ const MainSection = () => {
     });
   };
 
-  if(select){
-    console.log(select);
-  }
-
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
     setCurrentPage(1);
-  };
-
-  const formatCurrency = (price) => {
-    let formattedPrice = "";
-    switch (select) {
-      case "USD":
-        formattedPrice = `$${price}`;
-        break;
-      case "RUB":
-        formattedPrice = `${(price * 90).toFixed(0)}₽`;
-        break;
-      case "SUM":
-        formattedPrice = `${(price * 12000).toFixed(0)} SUM`;
-        break;
-      default:
-        formattedPrice = `$${price}`;
-        break;
-    }
-    if (formattedPrice.length > 11) {
-      formattedPrice = formattedPrice.substring(0, 8) + "...";
-    }
-    return formattedPrice;
   };
 
   const handleEyeClick = (e, id) => {
@@ -147,7 +121,7 @@ const MainSection = () => {
                   </td>
                   <td className="p-3 text-right text-white">
                     <Link href={`/single/${item.id}`}>
-                      <p>{formatCurrency(item.current_price)}</p>
+                      <p>{item.current_price}</p>
                     </Link>
                   </td>
                   <td className="p-3 flex absolute top-2 left-[55%]">
